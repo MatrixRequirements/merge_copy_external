@@ -1,6 +1,6 @@
-# matrix-ui-plugin-boilerplate plugin
+# merge_copy_external plugin
 
-![Plugin Build](https://github.com/MatrixRequirements/matrix-ui-plugin-boilerplate/actions/workflows/main.yml/badge.svg)
+![Plugin Build](https://github.com/MatrixRequirements/merge_copy_external/actions/workflows/main.yml/badge.svg)
 
 Matrix UI Plugins are implementations of the IPlugin interface.
 They can be registered in the plugin manager at startup and will be queried
