@@ -14,10 +14,12 @@ interface IinkToCreate {
 export class DashboardPage {
     settings: IProjectSettings;
 
-    static plugin = 212; // jira plugin id
+    plugin:number;
 
-    constructor() {
+    constructor(pid:number) {
+
         this.settings = { ...Plugin.config.projectSettingsPage.defaultSettings, ...IC.getSettingJSON(Plugin.config.projectSettingsPage.settingName, {}) } ;
+        this.plugin = pid;
     }
 
     /** render project dashboard */
@@ -174,7 +176,7 @@ export class DashboardPage {
             externalItems: [link]
         };
 
-        job.externalItems[0].plugin = DashboardPage.plugin;
+        job.externalItems[0].plugin = this.plugin;
 
         try {
            let create =  await wfgwConnection.postServer("?" + jQuery.param({ payload: JSON.stringify(job)}, true));
@@ -188,7 +190,7 @@ export class DashboardPage {
     private async getLinks(project:string) {
         
         let job = {
-            pluginId: DashboardPage.plugin,
+            pluginId: this.plugin,
             action: "GetIssues",
             matrixItem: {
                project: project

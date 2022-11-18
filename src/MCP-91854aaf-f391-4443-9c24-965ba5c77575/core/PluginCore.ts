@@ -242,18 +242,36 @@ export abstract class PluginCore implements IPlugin {
     getProjectPages(): IProjectPageParam[] {
         const pages: IProjectPageParam[] = [];
         if (this.enableDashboard() && Plugin.config.dashboard.enabled) {
-            pages.push({
-                id: Plugin.config.dashboard.id,
-                title: Plugin.config.dashboard.title,
-                folder: Plugin.config.dashboard.parent,
-                order: Plugin.config.dashboard.order,
-                icon: Plugin.config.dashboard.icon,
-                usesFilters: true,
-                render: (_options: IPluginPanelOptions) => {
-                    const gd = new DashboardPage();
-                    gd.renderProjectPage();
-                },
-            });
+            let plugins = Tasks.tasksConfiguration.map( p => p.pluginId);
+
+            if (plugins.indexOf(211) !=-1) {
+                    pages.push({
+                    id: Plugin.config.dashboard.id + "_JIRA_S",
+                    title: Plugin.config.dashboard.title,
+                    folder: Plugin.config.dashboard.parent,
+                    order: Plugin.config.dashboard.order,
+                    icon: Plugin.config.dashboard.icon,
+                    usesFilters: true,
+                    render: (_options: IPluginPanelOptions) => {
+                        const gd = new DashboardPage(211);// jira server
+                        gd.renderProjectPage();
+                    },
+                });
+            }
+            if (plugins.indexOf(212) !=-1) {
+                pages.push({
+                    id: Plugin.config.dashboard.id + "_JIRA_C",
+                    title: Plugin.config.dashboard.title,
+                    folder: Plugin.config.dashboard.parent,
+                    order: Plugin.config.dashboard.order,
+                    icon: Plugin.config.dashboard.icon,
+                    usesFilters: true,
+                    render: (_options: IPluginPanelOptions) => {
+                        const gd = new DashboardPage(212); // jira cloud
+                        gd.renderProjectPage();
+                    },
+                });
+            }
         }
             
         return pages;
