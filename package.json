@@ -18,7 +18,7 @@
     "check": "tsc --noEmit",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint src --ext .ts",
-    "parcel": "parcel src/MCP-91854aaf-f391-4443-9c24-965ba5c77575/Main.ts --dist-dir /home/clouds/clouds/custom/js --no-hmr",
+    "parcel": "parcel src/MCP-91854aaf-f391-4443-9c24-965ba5c77575/Main.ts --dist-dir C:\\git\\matrix-client-server\\server\\Clouds\\docker\\data\\home\\clouds\\custom\\js --no-hmr",
     "parcel-dist": "parcel build src/MCP-91854aaf-f391-4443-9c24-965ba5c77575/Main.ts"
   },
   "author": "",

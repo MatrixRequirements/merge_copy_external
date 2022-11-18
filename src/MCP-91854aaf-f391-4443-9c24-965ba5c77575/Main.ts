@@ -20,7 +20,7 @@ export class Plugin extends PluginCore {
             id: "MCPCustomerSettings",
             title: "MCP customer settings page",
             type: "MCPcs",
-            enabled: true,
+            enabled: false,
             defaultSettings: {
                 myServerSetting: "default value for setting defined in Interfaces.ts",
             },
@@ -35,7 +35,7 @@ export class Plugin extends PluginCore {
             id: "MCPprojectsettings",
             title: "MCP projectsettings page",
             type:"MCPps",
-            enabled: true,
+            enabled: false,
             defaultSettings: {
                 myProjectSetting:  "default value for setting defined in Interfaces.ts",
             },
@@ -47,14 +47,14 @@ export class Plugin extends PluginCore {
             The tool itself is implemented in the _Tool.ts 
         */
         menuToolItem: {
-            enabled: true,
+            enabled: false,
             title:"merge_copy_external-menuitem",
         },
         /*  Add a custom field to enter some data in the UI - set enabled to false if not needed.
             The field itself is implemented in the _Control.ts 
         */
         field: {
-            enabled: true,
+            enabled: false,
             fieldType: "merge_copy_external",
             title: "merge_copy_external-field",
             fieldConfigOptions: {
@@ -78,10 +78,10 @@ export class Plugin extends PluginCore {
         dashboard: {        
             
             id:"MCP",
-            title: "MCP dashboard page",
+            title: "External link sync tool",
             enabled: true,
             icon: "fal fa-cog",
-            parent: "DASHBOARDS",
+            parent: "BRANCHES",
             usefilter: true,
             order: 9999,
         }
