@@ -27,17 +27,22 @@ export class DashboardPage {
 
         // get merge history dashboard
         let branchHistoryPlugin;
+        let mergeHistoryPlugin;
         
         for (let plugin of (<any>plugins)._plugins) {
             if (plugin.constructor.name == "BranchHistory") {
                 branchHistoryPlugin = plugin;
             } else if (plugin.constructor.name == "Merge" && !branchHistoryPlugin) {
-                branchHistoryPlugin = plugin;
+                mergeHistoryPlugin = plugin;
             }
         }
 
         if (branchHistoryPlugin) {
             branchHistoryPlugin.showBranchHistory(control);
+            $( "#itemDetails > div.panel-heading.itemTitleBar.addedTitle > div.itemTitle.pull-left > span").append(" - link merge ");
+            this.addLinkMergeButtons();
+        } else if (mergeHistoryPlugin) {
+            mergeHistoryPlugin.showMergeHistory(control);
             $( "#itemDetails > div.panel-heading.itemTitleBar.addedTitle > div.itemTitle.pull-left > span").append(" - link merge ");
             this.addLinkMergeButtons();
         } else {
