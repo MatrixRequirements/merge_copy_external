@@ -27,8 +27,11 @@ export class DashboardPage {
 
         // get merge history dashboard
         let branchHistoryPlugin;
+        
         for (let plugin of (<any>plugins)._plugins) {
             if (plugin.constructor.name == "BranchHistory") {
+                branchHistoryPlugin = plugin;
+            } else if (plugin.constructor.name == "Merge" && !branchHistoryPlugin) {
                 branchHistoryPlugin = plugin;
             }
         }
